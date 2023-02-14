@@ -125,13 +125,24 @@ enum custom_keycodes {
     TG_CHI,
     TG_PSI,
     TG_OMEG,
-    TG_FRAC
+    TX_REF,
+    TX_CITE,
+    TM_FRAC,
+    TM_TILD,
+    TM_SQRT,
+    TM_DFDT,
+    TM_DFDX,
+    TM_DFDY,
+    TM_DFDZ,
+    TM_MTRX,
+    TM_BMRX,
+    TM_PMRX
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-       KC_ESC,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                         KC_Y,    KC_U,    KC_I,    KC_O,   KC_P,  KC_BSPC,
+      LALT_T(KC_ESC),KC_Q, KC_W,    KC_E,    KC_R,    KC_T,                         KC_Y,    KC_U,    KC_I,    KC_O,   KC_P,  KC_BSPC,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       LCTL_T(KC_TAB),KC_A, KC_S,    KC_D,    KC_F,    KC_G,                         KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN, RGUI_T(KC_QUOT),
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
@@ -144,7 +155,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [1] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-        TG(4),    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                      KC_HOME, KC_PGDN, KC_PGUP, KC_END,  KC_EQL,  KC_DEL,
+      _______,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                      KC_HOME, KC_PGDN, KC_PGUP, KC_END,  KC_EQL,  KC_DEL,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       _______,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,                      KC_LEFT, KC_DOWN,   KC_UP,KC_RIGHT, KC_MINS, RGUI_T(KC_GRV),
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
@@ -156,9 +167,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [2] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-        TG(4), KC_LABK, KC_LBRC, KC_LCBR, KC_LPRN, KC_LABK,                      S(KC_1), S(KC_2), S(KC_3), S(KC_4), S(KC_5),A(KC_BSPC),
+      _______, KC_LABK, KC_LBRC, KC_LCBR, KC_LPRN, KC_LABK,                      S(KC_1), S(KC_2), S(KC_3), S(KC_4), S(KC_5),A(KC_BSPC),
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      _______, KC_RABK, KC_RBRC, KC_RCBR, KC_RPRN, KC_RABK,                      S(KC_6), S(KC_7), S(KC_8), S(KC_9), S(KC_0), XXXXXXX,
+      _______, KC_RABK, KC_RBRC, KC_RCBR, KC_RPRN, KC_RABK,                      S(KC_6), S(KC_7), S(KC_8),   TG(4),   TG(5), XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       _______, KC_PLUS, KC_MINS, KC_ASTR, KC_SLSH,  KC_EQL,                     OSM(MOD_RSFT),OSM(MOD_RGUI),OSM(MOD_RALT),OSM(MOD_RCTL), XXXXXXX, _______,
                              _______, LT(1,KC_ENT), KC_ESC,  _______, _______, _______
@@ -177,10 +188,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [4] = LAYOUT(
-        TG(4), _______, _______, TG_EPSL,  TG_RHO,  TG_TAU,     TG_UPSL, TG_THET, TG_IOTA, TG_OMCR,   TG_PI,    _______,
-      _______, TG_ALPH, TG_SIGM, TG_DLTA,  TG_PHI, TG_GAMM,      TG_ETA,   TG_XI, TG_KAPP, TG_LMBD, TG_FRAC, _______,
-      _______, TG_ZETA,  TG_CHI,  TG_PSI, TG_OMEG, TG_BETA,       TG_NU,   TG_MU, _______, _______, _______, _______,
+      _______, XXXXXXX, XXXXXXX, TG_EPSL,  TG_RHO,  TG_TAU,     TG_UPSL, TG_THET, TG_IOTA, TG_OMCR,   TG_PI, _______,
+      _______, TG_ALPH, TG_SIGM, TG_DLTA,  TG_PHI, TG_GAMM,      TG_ETA,   TG_XI, TG_KAPP, TG_LMBD, TM_FRAC, TM_TILD,
+      _______, TG_ZETA,  TG_CHI,  TG_PSI, TG_OMEG, TG_BETA,       TG_NU,   TG_MU, XXXXXXX, XXXXXXX, _______, _______,
                                  _______, _______,   TG(4),     _______, _______, _______
+    ),
+
+  [5] = LAYOUT(
+      _______, XXXXXXX, XXXXXXX, XXXXXXX,  TX_REF, TM_DFDT,     TM_DFDY, XXXXXXX, XXXXXXX, XXXXXXX, TM_PMRX, _______,
+      _______, XXXXXXX, TM_SQRT, XXXXXXX, XXXXXXX, XXXXXXX,     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, TM_FRAC, TM_TILD,
+      _______, TM_DFDZ, TM_DFDX, TX_CITE, XXXXXXX, TM_BMRX,     XXXXXXX, TM_MTRX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
+                                 _______, _______,   TG(5),     _______, _______, _______
     )
 };
 
@@ -335,13 +353,145 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 layer_move(0);
             return false;
             }
-        case TG_FRAC:
+        case TX_REF:
+            if (record->event.pressed) {
+                clear_mods();
+                clear_oneshot_mods();
+                send_string("(\\ref{})");
+                for (int i = 0; i<2; i++){
+                    tap_code(KC_LEFT);
+                }
+                set_mods(mods);
+                layer_move(0);
+            }
+            return false;
+        case TX_CITE:
+            if (record->event.pressed) {
+                clear_mods();
+                clear_oneshot_mods();
+                send_string("\\cite{}");
+                for (int i = 0; i<1; i++){
+                    tap_code(KC_LEFT);
+                }
+                set_mods(mods);
+                layer_move(0);
+            }
+            return false;
+        case TM_FRAC:
             if (record->event.pressed) {
                 clear_mods();
                 clear_oneshot_mods();
                 send_string("\\frac{}{}");
                 for (int i = 0; i<3; i++){
                     tap_code(KC_LEFT);
+                }
+                set_mods(mods);
+                layer_move(0);
+            }
+            return false;
+        case TM_TILD:
+            if (record->event.pressed) {
+                clear_mods();
+                clear_oneshot_mods();
+                send_string("\\tilde{}");
+                for (int i = 0; i<1; i++){
+                    tap_code(KC_LEFT);
+                }
+                set_mods(mods);
+                layer_move(0);
+            }
+            return false;
+        case TM_SQRT:
+            if (record->event.pressed) {
+                clear_mods();
+                clear_oneshot_mods();
+                send_string("\\sqrt{}");
+                for (int i = 0; i<1; i++){
+                    tap_code(KC_LEFT);
+                }
+                set_mods(mods);
+                layer_move(0);
+            }
+            return false;
+        case TM_DFDT:
+            if (record->event.pressed) {
+                clear_mods();
+                clear_oneshot_mods();
+                send_string("\\frac{\\partial }{\\partial t}");
+                for (int i = 0; i<13; i++){
+                    tap_code(KC_LEFT);
+                }
+                set_mods(mods);
+                layer_move(0);
+            }
+            return false;
+        case TM_DFDX:
+            if (record->event.pressed) {
+                clear_mods();
+                clear_oneshot_mods();
+                send_string("\\frac{\\partial }{\\partial x}");
+                for (int i = 0; i<13; i++){
+                    tap_code(KC_LEFT);
+                }
+                set_mods(mods);
+                layer_move(0);
+            }
+            return false;
+        case TM_DFDY:
+            if (record->event.pressed) {
+                clear_mods();
+                clear_oneshot_mods();
+                send_string("\\frac{\\partial }{\\partial y}");
+                for (int i = 0; i<13; i++){
+                    tap_code(KC_LEFT);
+                }
+                set_mods(mods);
+                layer_move(0);
+            }
+            return false;
+        case TM_DFDZ:
+            if (record->event.pressed) {
+                clear_mods();
+                clear_oneshot_mods();
+                send_string("\\frac{\\partial }{\\partial z}");
+                for (int i = 0; i<13; i++){
+                    tap_code(KC_LEFT);
+                }
+                set_mods(mods);
+                layer_move(0);
+            }
+            return false;
+        case TM_MTRX:
+            if (record->event.pressed) {
+                clear_mods();
+                clear_oneshot_mods();
+                send_string("\\begin{matrix}\n\t\n\\end{matrix}");
+                for (int i = 0; i<1; i++){
+                    tap_code(KC_UP);
+                }
+                set_mods(mods);
+                layer_move(0);
+            }
+            return false;
+        case TM_BMRX:
+            if (record->event.pressed) {
+                clear_mods();
+                clear_oneshot_mods();
+                send_string("\\begin{bmatrix}\n\t\n\\end{bmatrix}");
+                for (int i = 0; i<1; i++){
+                    tap_code(KC_UP);
+                }
+                set_mods(mods);
+                layer_move(0);
+            }
+            return false;
+        case TM_PMRX:
+            if (record->event.pressed) {
+                clear_mods();
+                clear_oneshot_mods();
+                send_string("\\begin{pmatrix}\n\t\n\\end{pmatrix}");
+                for (int i = 0; i<1; i++){
+                    tap_code(KC_UP);
                 }
                 set_mods(mods);
                 layer_move(0);
