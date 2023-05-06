@@ -1,4 +1,6 @@
-ichar gr_l[24][9] = {
+#include QMK_KEYBOARD_H
+
+char gr_l[24][9] = {
     "\\alpha",
     "\\beta",
     "\\gamma",
