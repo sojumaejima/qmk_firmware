@@ -8,11 +8,13 @@ typedef struct tex_macro{
     uint8_t left;
 }tex_macro_t;
 
-tex_macro_t gr_l[24];
-tex_macro_t gr_u[24];
-tex_macro_t gr_v[24];
-tex_macro_t tex_cmd[11];
-tex_macro_t tex_cmd_ctrl[11];
+#define NUM_GREEK 24
+#define NUM_TEXMACRO 11
+tex_macro_t gr_l[NUM_GREEK];
+tex_macro_t gr_u[NUM_GREEK];
+tex_macro_t gr_v[NUM_GREEK];
+tex_macro_t tex_cmd[NUM_TEXMACRO];
+tex_macro_t tex_cmd_ctrl[NUM_TEXMACRO];
 
 enum custom_keycodes {
     TX_ALPH = SAFE_RANGE,
@@ -38,7 +40,7 @@ enum custom_keycodes {
     TX_PHI,
     TX_CHI,
     TX_PSI,
-    TX_OMEG,
+    TX_OMEG,    //24
     TX_TILD,
     TX_HAT,
     TX_OVLN,
@@ -49,7 +51,7 @@ enum custom_keycodes {
     TX_DFDY,
     TX_DFDZ,
     TX_REF,
-    TX_CITE,
+    TX_CITE,    //11
     TX_BSPC,
     NEW_SAFE_RANGE
 };
