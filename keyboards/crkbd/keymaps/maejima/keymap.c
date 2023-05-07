@@ -193,6 +193,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case TX_ALPH ... TX_BSPC:
             return process_latex(keycode, record);
+    }
 
 #ifdef OLED_ENABLE
   if (record->event.pressed) {
