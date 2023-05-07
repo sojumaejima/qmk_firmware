@@ -188,12 +188,7 @@ bool oled_task_user(void) {
 }
 #endif // OLED_ENABLE
 
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-
-    switch (keycode) {
-        case TX_ALPH ... TX_BSPC:
-            return process_latex(keycode, record);
-    }
+bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
 
 #ifdef OLED_ENABLE
   if (record->event.pressed) {

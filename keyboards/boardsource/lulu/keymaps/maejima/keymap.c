@@ -100,14 +100,8 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
     return false;
 }
 #endif
-
-bool process_record_user(uint16_t keycode, keyrecord_t* record) {
-//    const uint8_t mods = get_mods();
-//    const uint8_t oneshot_mods = get_oneshot_mods();
-
-    switch (keycode) {
-        case TX_ALPH ... TX_BSPC:
-            return process_latex(keycode, record);
-    }
+/*
+bool process_record_keymap(uint16_t keycode, keyrecord_t* record) {
     return true;
 }
+*/
