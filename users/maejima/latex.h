@@ -1,126 +1,57 @@
+#pragma once
+
 #include QMK_KEYBOARD_H
 
-char gr_l[24][9] = {
-    "\\alpha",
-    "\\beta",
-    "\\gamma",
-    "\\delta",
-    "\\epsilon",
-    "\\zeta",
-    "\\eta",
-    "\\theta",
-    "\\iota",
-    "\\kappa",
-    "\\lambda",
-    "\\mu",
-    "\\nu",
-    "\\xi",
-    "o",
-    "\\pi",
-    "\\rho",
-    "\\sigma",
-    "\\tau",
-    "\\upsilon",
-    "\\phi",
-    "\\chi",
-    "\\psi",
-    "\\omega"
-};
+typedef struct tex_macro{
+    char *str;
+    uint8_t len;
+    uint8_t left;
+}tex_macro_t;
 
-char gr_u[24][9] = {
-    "A",
-    "B",
-    "\\Gamma",
-    "\\Delta",
-    "E",
-    "Z",
-    "H",
-    "\\Theta",
-    "I",
-    "K",
-    "\\Lambda",
-    "M",
-    "N",
-    "\\Xi",
-    "O",
-    "\\Pi",
-    "P",
-    "\\Sigma",
-    "T",
-    "\\Upsilon",
-    "\\Phi",
-    "X",
-    "\\Psi",
-    "\\Omega"
-};
-
-char gr_v[24][12] = {
-    "\\alpha",
-    "\\beta",
-    "\\gamma",
-    "\\partial",
-    "\\varepsilon",
-    "\\zeta",
-    "\\eta",
-    "\\vartheta",
-    "\\iota",
-    "\\kappa",
-    "\\lambda",
-    "\\mu",
-    "\\nu",
-    "\\xi",
-    "o",
-    "\\pi",
-    "\\varrho",
-    "\\sigma",
-    "\\tau",
-    "\\upsilon",
-    "\\varphi",
-    "\\chi",
-    "\\psi",
-    "\\omega"
-};
+tex_macro_t gr_l[24];
+tex_macro_t gr_u[24];
+tex_macro_t gr_v[24];
+tex_macro_t tex_cmd[11];
+tex_macro_t tex_cmd_ctrl[11];
 
 enum custom_keycodes {
-    TG_ALPH = SAFE_RANGE,
-    TG_BETA,
-    TG_GAMM,
-    TG_DLTA,
-    TG_EPSL,
-    TG_ZETA,
-    TG_ETA,
-    TG_THET,
-    TG_IOTA,
-    TG_KAPP,
-    TG_LMBD,
-    TG_MU,
-    TG_NU,
-    TG_XI,
-    TG_OMCR,
-    TG_PI,
-    TG_RHO,
-    TG_SIGM,
-    TG_TAU,
-    TG_UPSL,
-    TG_PHI,
-    TG_CHI,
-    TG_PSI,
-    TG_OMEG,
+    TX_ALPH = SAFE_RANGE,
+    TX_BETA,
+    TX_GAMM,
+    TX_DLTA,
+    TX_EPSL,
+    TX_ZETA,
+    TX_ETA,
+    TX_THET,
+    TX_IOTA,
+    TX_KAPP,
+    TX_LMBD,
+    TX_MU,
+    TX_NU,
+    TX_XI,
+    TX_OMCR,
+    TX_PI,
+    TX_RHO,
+    TX_SIGM,
+    TX_TAU,
+    TX_UPSL,
+    TX_PHI,
+    TX_CHI,
+    TX_PSI,
+    TX_OMEG,
+    TX_TILD,
+    TX_HAT,
+    TX_OVLN,
+    TX_SQRT,
+    TX_FRAC,
+    TX_DFDT,
+    TX_DFDX,
+    TX_DFDY,
+    TX_DFDZ,
     TX_REF,
     TX_CITE,
-    TM_FRAC,
-    TM_TILD,
-    TM_SQRT,
-    TM_DFDT,
-    TM_DFDX,
-    TM_DFDY,
-    TM_DFDZ,
-    TM_MTRX,
-    TM_BMRX,
-    TM_PMRX,
+    TX_BSPC,
     NEW_SAFE_RANGE
 };
 
-bool process_greek(uint16_t keycode, keyrecord_t *record);
-bool process_latex_macro(uint16_t keycode, keyrecord_t *record);
-
+bool process_latex(uint16_t keycode, keyrecord_t *record);

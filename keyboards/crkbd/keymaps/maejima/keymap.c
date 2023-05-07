@@ -18,126 +18,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include QMK_KEYBOARD_H
 #include <stdio.h>
+#include "maejima.h"
 
-char gr_l[24][9] = {
-    "\\alpha",
-    "\\beta",
-    "\\gamma",
-    "\\delta",
-    "\\epsilon",
-    "\\zeta",
-    "\\eta",
-    "\\theta",
-    "\\iota",
-    "\\kappa",
-    "\\lambda",
-    "\\mu",
-    "\\nu",
-    "\\xi",
-    "o",
-    "\\pi",
-    "\\rho",
-    "\\sigma",
-    "\\tau",
-    "\\upsilon",
-    "\\phi",
-    "\\chi",
-    "\\psi",
-    "\\omega"
-};
-
-char gr_u[24][9] = {
-    "A",
-    "B",
-    "\\Gamma",
-    "\\Delta",
-    "E",
-    "Z",
-    "H",
-    "\\Theta",
-    "I",
-    "K",
-    "\\Lambda",
-    "M",
-    "N",
-    "\\Xi",
-    "O",
-    "\\Pi",
-    "P",
-    "\\Sigma",
-    "T",
-    "\\Upsilon",
-    "\\Phi",
-    "X",
-    "\\Psi",
-    "\\Omega"
-};
-
-char gr_v[24][12] = {
-    "\\alpha",
-    "\\beta",
-    "\\gamma",
-    "\\partial",
-    "\\varepsilon",
-    "\\zeta",
-    "\\eta",
-    "\\vartheta",
-    "\\iota",
-    "\\kappa",
-    "\\lambda",
-    "\\mu",
-    "\\nu",
-    "\\xi",
-    "o",
-    "\\pi",
-    "\\varrho",
-    "\\sigma",
-    "\\tau",
-    "\\upsilon",
-    "\\varphi",
-    "\\chi",
-    "\\psi",
-    "\\omega"
-};
-
-enum custom_keycodes {
-    TG_ALPH = SAFE_RANGE,
-    TG_BETA,
-    TG_GAMM,
-    TG_DLTA,
-    TG_EPSL,
-    TG_ZETA,
-    TG_ETA,
-    TG_THET,
-    TG_IOTA,
-    TG_KAPP,
-    TG_LMBD,
-    TG_MU,
-    TG_NU,
-    TG_XI,
-    TG_OMCR,
-    TG_PI,
-    TG_RHO,
-    TG_SIGM,
-    TG_TAU,
-    TG_UPSL,
-    TG_PHI,
-    TG_CHI,
-    TG_PSI,
-    TG_OMEG,
-    TX_REF,
-    TX_CITE,
-    TM_FRAC,
-    TM_TILD,
-    TM_SQRT,
-    TM_DFDT,
-    TM_DFDX,
-    TM_DFDY,
-    TM_DFDZ,
-    TM_MTRX,
-    TM_BMRX,
-    TM_PMRX
-};
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_split_3x6_3(
@@ -188,17 +70,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [4] = LAYOUT(
-      _______, XXXXXXX, XXXXXXX, TG_EPSL,  TG_RHO,  TG_TAU,     TG_UPSL, TG_THET, TG_IOTA, TG_OMCR,   TG_PI, _______,
-      _______, TG_ALPH, TG_SIGM, TG_DLTA,  TG_PHI, TG_GAMM,      TG_ETA,   TG_XI, TG_KAPP, TG_LMBD, TM_FRAC, TM_TILD,
-      _______, TG_ZETA,  TG_CHI,  TG_PSI, TG_OMEG, TG_BETA,       TG_NU,   TG_MU, XXXXXXX, XXXXXXX, _______, _______,
-                                 _______, _______,   TG(4),     _______, _______, _______
+      _______, XXXXXXX, XXXXXXX, TX_EPSL,  TX_RHO,  TX_TAU,     TX_UPSL, TX_THET, TX_IOTA, TX_OMCR,   TX_PI, _______,
+      _______, TX_ALPH, TX_SIGM, TX_DLTA,  TX_PHI, TX_GAMM,      TX_ETA,   TX_XI, TX_KAPP, TX_LMBD, TX_FRAC, TX_TILD,
+      _______, TX_ZETA,  TX_CHI,  TX_PSI, TX_OMEG, TX_BETA,       TX_NU,   TX_MU, XXXXXXX, XXXXXXX, _______, _______,
+                                 _______, _______,   TG(4),     TX_BSPC, _______, _______
     ),
 
   [5] = LAYOUT(
-      _______, XXXXXXX, XXXXXXX, XXXXXXX,  TX_REF, TM_DFDT,     TM_DFDY, XXXXXXX, XXXXXXX, XXXXXXX, TM_PMRX, _______,
-      _______, XXXXXXX, TM_SQRT, XXXXXXX, XXXXXXX, XXXXXXX,     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, TM_FRAC, TM_TILD,
-      _______, TM_DFDZ, TM_DFDX, TX_CITE, XXXXXXX, TM_BMRX,     XXXXXXX, TM_MTRX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
-                                 _______, _______,   TG(5),     _______, _______, _______
+      _______, XXXXXXX, XXXXXXX, XXXXXXX,  TX_REF, TX_DFDT,     TX_DFDY, XXXXXXX, XXXXXXX, TX_OVLN, XXXXXXX, _______,
+      _______, XXXXXXX, TX_SQRT, XXXXXXX, XXXXXXX, XXXXXXX,      TX_HAT, XXXXXXX, XXXXXXX, XXXXXXX, TX_FRAC, TX_TILD,
+      _______, TX_DFDZ, TX_DFDX, TX_CITE, XXXXXXX, XXXXXXX,     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
+                                 _______, _______,   TG(5),     TX_BSPC, _______, _______
     )
 };
 
@@ -307,200 +189,10 @@ bool oled_task_user(void) {
 #endif // OLED_ENABLE
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    const uint8_t mods = get_mods();
-    const uint8_t oneshot_mods = get_oneshot_mods();
 
     switch (keycode) {
-        case TG_ALPH:
-        case TG_BETA:
-        case TG_GAMM:
-        case TG_DLTA:
-        case TG_EPSL:
-        case TG_ZETA:
-        case TG_ETA:
-        case TG_THET:
-        case TG_IOTA:
-        case TG_KAPP:
-        case TG_LMBD:
-        case TG_MU:
-        case TG_NU:
-        case TG_XI:
-        case TG_OMCR:
-        case TG_PI:
-        case TG_RHO:
-        case TG_SIGM:
-        case TG_TAU:
-        case TG_UPSL:
-        case TG_PHI:
-        case TG_CHI:
-        case TG_PSI:
-        case TG_OMEG:
-            if (record->event.pressed) {
-                int c = keycode - TG_ALPH;
-                if ((mods | oneshot_mods) & MOD_MASK_SHIFT) {  // Is shift held?
-                    del_mods(MOD_MASK_SHIFT);  // Temporarily delete shift.
-                    del_oneshot_mods(MOD_MASK_SHIFT);
-                    send_string(gr_u[c]);
-                    set_mods(mods);
-                } else if ((mods | oneshot_mods) & MOD_MASK_CTRL) {  // Is ctrl held?
-                    del_mods(MOD_MASK_CTRL);  // Temporarily delete ctrl.
-                    del_oneshot_mods(MOD_MASK_CTRL);
-                    send_string(gr_v[c]);
-                    set_mods(mods);
-                } else {
-                    send_string(gr_l[c]);
-                }
-                layer_move(0);
-            return false;
-            }
-        case TX_REF:
-            if (record->event.pressed) {
-                clear_mods();
-                clear_oneshot_mods();
-                send_string("(\\ref{})");
-                for (int i = 0; i<2; i++){
-                    tap_code(KC_LEFT);
-                }
-                set_mods(mods);
-                layer_move(0);
-            }
-            return false;
-        case TX_CITE:
-            if (record->event.pressed) {
-                clear_mods();
-                clear_oneshot_mods();
-                send_string("\\cite{}");
-                for (int i = 0; i<1; i++){
-                    tap_code(KC_LEFT);
-                }
-                set_mods(mods);
-                layer_move(0);
-            }
-            return false;
-        case TM_FRAC:
-            if (record->event.pressed) {
-                clear_mods();
-                clear_oneshot_mods();
-                send_string("\\frac{}{}");
-                for (int i = 0; i<3; i++){
-                    tap_code(KC_LEFT);
-                }
-                set_mods(mods);
-                layer_move(0);
-            }
-            return false;
-        case TM_TILD:
-            if (record->event.pressed) {
-                clear_mods();
-                clear_oneshot_mods();
-                send_string("\\tilde{}");
-                for (int i = 0; i<1; i++){
-                    tap_code(KC_LEFT);
-                }
-                set_mods(mods);
-                layer_move(0);
-            }
-            return false;
-        case TM_SQRT:
-            if (record->event.pressed) {
-                clear_mods();
-                clear_oneshot_mods();
-                send_string("\\sqrt{}");
-                for (int i = 0; i<1; i++){
-                    tap_code(KC_LEFT);
-                }
-                set_mods(mods);
-                layer_move(0);
-            }
-            return false;
-        case TM_DFDT:
-            if (record->event.pressed) {
-                clear_mods();
-                clear_oneshot_mods();
-                send_string("\\frac{\\partial }{\\partial t}");
-                for (int i = 0; i<13; i++){
-                    tap_code(KC_LEFT);
-                }
-                set_mods(mods);
-                layer_move(0);
-            }
-            return false;
-        case TM_DFDX:
-            if (record->event.pressed) {
-                clear_mods();
-                clear_oneshot_mods();
-                send_string("\\frac{\\partial }{\\partial x}");
-                for (int i = 0; i<13; i++){
-                    tap_code(KC_LEFT);
-                }
-                set_mods(mods);
-                layer_move(0);
-            }
-            return false;
-        case TM_DFDY:
-            if (record->event.pressed) {
-                clear_mods();
-                clear_oneshot_mods();
-                send_string("\\frac{\\partial }{\\partial y}");
-                for (int i = 0; i<13; i++){
-                    tap_code(KC_LEFT);
-                }
-                set_mods(mods);
-                layer_move(0);
-            }
-            return false;
-        case TM_DFDZ:
-            if (record->event.pressed) {
-                clear_mods();
-                clear_oneshot_mods();
-                send_string("\\frac{\\partial }{\\partial z}");
-                for (int i = 0; i<13; i++){
-                    tap_code(KC_LEFT);
-                }
-                set_mods(mods);
-                layer_move(0);
-            }
-            return false;
-        case TM_MTRX:
-            if (record->event.pressed) {
-                clear_mods();
-                clear_oneshot_mods();
-                send_string("\\begin{matrix}\n\t\n\\end{matrix}");
-                for (int i = 0; i<1; i++){
-                    tap_code(KC_UP);
-                }
-                set_mods(mods);
-                layer_move(0);
-            }
-            return false;
-        case TM_BMRX:
-            if (record->event.pressed) {
-                clear_mods();
-                clear_oneshot_mods();
-                send_string("\\begin{bmatrix}\n\t\n\\end{bmatrix}");
-                for (int i = 0; i<1; i++){
-                    tap_code(KC_UP);
-                }
-                set_mods(mods);
-                layer_move(0);
-            }
-            return false;
-        case TM_PMRX:
-            if (record->event.pressed) {
-                clear_mods();
-                clear_oneshot_mods();
-                send_string("\\begin{pmatrix}\n\t\n\\end{pmatrix}");
-                for (int i = 0; i<1; i++){
-                    tap_code(KC_UP);
-                }
-                set_mods(mods);
-                layer_move(0);
-            }
-            return false;
-
-    }
-
-//    if (!process_caps_word(keycode, record)) { return false; }
+        case TX_ALPH ... TX_BSPC:
+            return process_latex(keycode, record);
 
 #ifdef OLED_ENABLE
   if (record->event.pressed) {
