@@ -48,7 +48,6 @@ quantum/version.h
 .idea/
 .project
 .settings/
-.vagrant/
 
 # ?
 .dep
@@ -110,3 +109,7 @@ compile_commands.json
 
 # VIA(L) json files that don't belong in QMK repo
 via*.json
+
+
+#user keyboard symbolic links
+/keyboards/pangaea
