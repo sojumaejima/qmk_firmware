@@ -55,3 +55,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define MOUSEKEY_MAX_SPEED 2
 
 #define BOTH_SHIFTS_TURNS_ON_CAPS_WORD
+
+// userspace preprocessor macro
+#define LATEX_ENABLE
