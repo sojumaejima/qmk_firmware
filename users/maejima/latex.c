@@ -1,3 +1,4 @@
+#ifdef LATEX_ENABLE
 #include <latex.h>
 
 tex_macro_t gr_l[24] = {
@@ -173,3 +174,4 @@ bool process_latex(uint16_t keycode, keyrecord_t *record){
     return false;
 }
 //bool process_latex_macro(uint16_t keycode, keyrecord_t *record);
+#endif

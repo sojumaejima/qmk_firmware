@@ -2,6 +2,7 @@
 
 #include QMK_KEYBOARD_H
 
+#ifdef LATEX_ENABLE
 typedef struct tex_macro{
     char *str;
     uint8_t len;
@@ -57,3 +58,4 @@ enum custom_keycodes {
 };
 
 bool process_latex(uint16_t keycode, keyrecord_t *record);
+#endif
