@@ -25,6 +25,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_BASE] = LAYOUT_wrapper(
+  //,-----------------------------------------------------.                    ,-----------------------------------------------------.
       _____________________6C_BASE_L1_____________________,                      _____________________6C_BASE_R1_____________________,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       _____________________6C_BASE_L2_____________________,                      _____________________6C_BASE_R2_____________________,
@@ -94,15 +95,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
                                  _______, _______,   TG(_LATEX),        TX_BSPC, _______, _______
                                       //`--------------------------'  `--------------------------'
-    )
+    ),
 #endif
 };
-
-//A description for expressing the layer position in LED mode.
-layer_state_t layer_state_set_user(layer_state_t state) {
-  state = update_tri_layer_state(state, 1, 2, 3);
-  return state;
-}
 
 #ifdef OLED_ENABLE
 oled_rotation_t oled_init_user(oled_rotation_t rotation) {

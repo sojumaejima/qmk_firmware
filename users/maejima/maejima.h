@@ -13,4 +13,5 @@ enum userspace_layers {
     _GREEK,
     _LATEX,
 #endif
+    _LAYER_SAFE_RANGE,
 };
