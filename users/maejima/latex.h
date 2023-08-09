@@ -51,8 +51,8 @@ enum custom_keycodes {
     TX_DFDX,
     TX_DFDY,
     TX_DFDZ,
-    TX_REF,
-    TX_CITE,    //11
+    TX_LEFT,
+    TX_RGHT,    //11
     TX_BSPC,
     NEW_SAFE_RANGE
 };

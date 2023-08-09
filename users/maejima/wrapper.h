@@ -36,11 +36,11 @@
 #define _________________GREEK_R2__________________      TX_ETA,   TX_XI, TX_KAPP, TX_LMBD, TX_FRAC
 #define _________________GREEK_R3__________________       TX_NU,   TX_MU, XXXXXXX, XXXXXXX, _______
 
-#define _________________LATEX_L1__________________     XXXXXXX, XXXXXXX, XXXXXXX,  TX_REF, TX_DFDT
+#define _________________LATEX_L1__________________     XXXXXXX, XXXXXXX, XXXXXXX, TX_RGHT, TX_DFDT
 #define _________________LATEX_L2__________________     XXXXXXX, TX_SQRT, XXXXXXX, XXXXXXX, XXXXXXX
-#define _________________LATEX_L3__________________     TX_DFDZ, TX_DFDX, TX_CITE, XXXXXXX, XXXXXXX
+#define _________________LATEX_L3__________________     TX_DFDZ, TX_DFDX, XXXXXXX, XXXXXXX, XXXXXXX
 #define _________________LATEX_R1__________________     TX_DFDY, XXXXXXX, XXXXXXX, TX_OVLN, XXXXXXX
-#define _________________LATEX_R2__________________      TX_HAT, XXXXXXX, XXXXXXX, XXXXXXX, TX_FRAC
+#define _________________LATEX_R2__________________      TX_HAT, XXXXXXX, XXXXXXX, TX_LEFT, TX_FRAC
 #define _________________LATEX_R3__________________     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
 #endif
 

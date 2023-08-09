@@ -92,8 +92,8 @@ tex_macro_t tex_cmd[11] = {
     {"\\frac{\\partial }{\\partial x}", 28,13},
     {"\\frac{\\partial }{\\partial y}", 28,13},
     {"\\frac{\\partial }{\\partial z}", 28,13},
-    {"\\ref{}",                         6, 1},
-    {"\\cite{}",                        7, 1}
+    {"\\left",                          5, 0},
+    {"\\right",                         6, 0}
 };
 
 tex_macro_t tex_cmd_ctrl[11] = {
@@ -106,8 +106,8 @@ tex_macro_t tex_cmd_ctrl[11] = {
     {"\\frac{\\partial }{\\partial \\xi}",    30,15},
     {"\\frac{\\partial }{\\partial \\eta}",   31,16},
     {"\\frac{\\partial }{\\partial \\zeta}",  32,17},
-    {"\\ref{}",                         6, 1},
-    {"\\cite{}",                        7, 1}
+    {"\\left  \\right",                 13, 8},
+    {"\\right",                         6, 0}
 };
 
 static uint8_t len = 0;
@@ -140,7 +140,7 @@ bool process_latex(uint16_t keycode, keyrecord_t *record){
                 }
                 set_mods(mods);
                 break;
-            case TX_TILD ... TX_CITE:
+            case TX_TILD ... TX_RGHT:
                 c = keycode - TX_TILD;
                 if ((mods | oneshot_mods) & MOD_MASK_CTRL) {  // Is ctrl held?
                     del_mods(MOD_MASK_CTRL);  // Temporarily delete ctrl.
