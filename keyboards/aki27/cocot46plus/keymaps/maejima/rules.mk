@@ -1,1 +1,3 @@
 GRAVE_ESC_ENABLE = no
+
+COMBO_ENABLE = yes

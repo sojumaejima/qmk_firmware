@@ -3,6 +3,9 @@
 #include QMK_KEYBOARD_H
 #include "latex.h"
 #include "wrapper.h"
+#ifdef COMBO_ENABLE
+#include "combo.h"
+#endif
 
 enum userspace_layers {
     _BASE = 0,

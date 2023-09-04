@@ -8,3 +8,7 @@ CAPS_WORD_ENABLE = yes
 
 SRC += maejima.c
 SRC += latex.c
+
+ifdef COMBO_ENABLE
+SRC += combo.c
+endif
