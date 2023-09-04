@@ -62,11 +62,11 @@ tex_macro_t gr_v[24] = {
     {"\\partial",   8, 0},
     {"\\varepsilon",11, 0},
     {"\\zeta",      5, 0},
-    {"\\eta",       4, 0},
+    {"\\left",      5, 0},
     {"\\vartheta",  9, 0},
-    {"\\iota",      5, 0},
+    {"\\infty",     6, 0},
     {"\\kappa",     6, 0},
-    {"\\lambda",    7, 0},
+    {"\\right",     6, 0},
     {"\\mu",        3, 0},
     {"\\nu",        3, 0},
     {"\\xi",        3, 0},
@@ -106,7 +106,7 @@ tex_macro_t tex_cmd_ctrl[11] = {
     {"\\frac{\\partial }{\\partial \\xi}",    30,15},
     {"\\frac{\\partial }{\\partial \\eta}",   31,16},
     {"\\frac{\\partial }{\\partial \\zeta}",  32,17},
-    {"\\left  \\right",                 13, 8},
+    {"\\left(  \\right)",               15, 8},
     {"\\right",                         6, 0}
 };
 
