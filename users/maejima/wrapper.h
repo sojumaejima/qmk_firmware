@@ -63,7 +63,8 @@
 #define _____________________6C_BASE_R2_____________________    __________________BASE_R2__________________, RGUI_T(KC_QUOT)
 #define _____________________6C_BASE_R3_____________________    __________________BASE_R3__________________, KC_RSFT
 
-#define _______BASE_LTHUMB_______                       LGUI_T(KC_LNG2), MO(_LOWER), KC_SPC
+//#define _______BASE_LTHUMB_______                       LGUI_T(KC_LNG2), MO(_LOWER), KC_SPC
+#define _______BASE_LTHUMB_______                       LGUI_T(KC_LNG2), LT(_LOWER,KC_TAB), KC_SPC
 #define _______BASE_RTHUMB_______                       KC_SPC, MO(_RAISE), RALT_T(KC_LNG1)
 
 
@@ -97,7 +98,7 @@
 #else
 #define _________________RAISE_R2__________________     ______________SHIFT_NUMROW_60______________
 #endif
-#define _________________RAISE_R3__________________     ___________ONESHOTMODS____________, XXXXXXX
+#define _________________RAISE_R3__________________     _______, S(KC_GRV), S(KC_QUOT), S(KC_MINS), S(KC_BSLS)
 
 #define ____________________6C_RAISE_L1_____________________    _______, _________________RAISE_L1__________________
 #define ____________________6C_RAISE_L2_____________________    _______, _________________RAISE_L2__________________
