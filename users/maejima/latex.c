@@ -110,8 +110,9 @@ tex_macro_t tex_cmd_ctrl[11] = {
     {"\\right",                         6, 0}
 };
 
-static uint8_t len = 0;
-static uint8_t left = 0;
+static uint8_t lens[NUM_BACKSPACE];
+static uint8_t lefts[NUM_BACKSPACE];
+static uint8_t pos = 0;
 
 bool process_latex(uint16_t keycode, keyrecord_t *record){
     const uint8_t mods = get_mods();
@@ -125,20 +126,24 @@ bool process_latex(uint16_t keycode, keyrecord_t *record){
                     del_mods(MOD_MASK_SHIFT);  // Temporarily delete shift.
                     del_oneshot_mods(MOD_MASK_SHIFT);
                     send_string(gr_u[c].str);
-                    len = gr_u[c].len;
-                    left = gr_u[c].left;
+                    lens[pos] = gr_u[c].len;
+                    lefts[pos] = gr_u[c].left;
                 } else if ((mods | oneshot_mods) & MOD_MASK_CTRL) {  // Is ctrl held?
                     del_mods(MOD_MASK_CTRL);  // Temporarily delete ctrl.
                     del_oneshot_mods(MOD_MASK_CTRL);
                     send_string(gr_v[c].str);
-                    len = gr_v[c].len;
-                    left = gr_v[c].left;
+                    lens[pos] = gr_v[c].len;
+                    lefts[pos] = gr_v[c].left;
                 } else {
                     send_string(gr_l[c].str);
-                    len = gr_l[c].len;
-                    left = gr_l[c].left;
+                    lens[pos] = gr_l[c].len;
+                    lefts[pos] = gr_l[c].left;
                 }
                 set_mods(mods);
+                pos++;
+                if (pos >= NUM_BACKSPACE){
+                    pos = 0;
+                }
                 break;
             case TX_TILD ... TX_RGHT:
                 c = keycode - TX_TILD;
@@ -146,27 +151,35 @@ bool process_latex(uint16_t keycode, keyrecord_t *record){
                     del_mods(MOD_MASK_CTRL);  // Temporarily delete ctrl.
                     del_oneshot_mods(MOD_MASK_CTRL);
                     send_string(tex_cmd_ctrl[c].str);
-                    len = tex_cmd_ctrl[c].len;
-                    left = tex_cmd_ctrl[c].left;
+                    lens[pos] = tex_cmd_ctrl[c].len;
+                    lefts[pos] = tex_cmd_ctrl[c].left;
                 } else {
                     send_string(tex_cmd[c].str);
-                    len = tex_cmd[c].len;
-                    left = tex_cmd[c].left;
+                    lens[pos] = tex_cmd[c].len;
+                    lefts[pos] = tex_cmd[c].left;
                 }
-                for (uint8_t i=0; i<left; i++){
+                for (uint8_t i=0; i<lefts[pos]; i++){
                     tap_code(KC_LEFT);
                 }
                 set_mods(mods);
+                pos++;
+                if (pos >= NUM_BACKSPACE){
+                    pos = 0;
+                }
                 break;
             case TX_BSPC:
-                for (uint8_t i=0; i<left; i++){
+                pos--;
+                if (pos < 0){
+                    pos = NUM_BACKSPACE-1;
+                }
+                for (uint8_t i=0; i<lefts[pos]; i++){
                     tap_code(KC_RIGHT);
                 }
-                for (uint8_t i=0; i<len; i++){
+                for (uint8_t i=0; i<lens[pos]; i++){
                     tap_code(KC_BSPC);
                 }
-                left = 0;
-                len = 0;
+                lefts[pos] = 0;
+                lens[pos] = 0;
                 break;
         }
         layer_move(0);

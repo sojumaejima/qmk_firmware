@@ -11,6 +11,7 @@ typedef struct tex_macro{
 
 #define NUM_GREEK 24
 #define NUM_TEXMACRO 11
+#define NUM_BACKSPACE 8
 tex_macro_t gr_l[NUM_GREEK];
 tex_macro_t gr_u[NUM_GREEK];
 tex_macro_t gr_v[NUM_GREEK];
