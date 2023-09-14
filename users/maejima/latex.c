@@ -22,7 +22,7 @@ tex_macro_t gr_l[24] = {
     {"\\sigma",     6, 0},
     {"\\tau",       4, 0},
     {"\\upsilon",   8, 0},
-    {"\\phi",       5, 0},
+    {"\\phi",       4, 0},
     {"\\chi",       4, 0},
     {"\\psi",       4, 0},
     {"\\omega",     6, 0}
@@ -168,8 +168,9 @@ bool process_latex(uint16_t keycode, keyrecord_t *record){
                 }
                 break;
             case TX_BSPC:
-                pos--;
-                if (pos < 0){
+                if (pos > 0){
+                    pos--;
+                }else{
                     pos = NUM_BACKSPACE-1;
                 }
                 for (uint8_t i=0; i<lefts[pos]; i++){
