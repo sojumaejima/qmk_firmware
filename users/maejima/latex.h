@@ -43,17 +43,7 @@ enum custom_keycodes {
     TX_CHI,
     TX_PSI,
     TX_OMEG,    //24
-    TX_TILD,
-    TX_HAT,
-    TX_OVLN,
-    TX_SQRT,
     TX_FRAC,
-    TX_DFDT,
-    TX_DFDX,
-    TX_DFDY,
-    TX_DFDZ,
-    TX_LEFT,
-    TX_RGHT,    //11
     TX_BSPC,
     NEW_SAFE_RANGE
 };

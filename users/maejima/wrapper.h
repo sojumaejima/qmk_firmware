@@ -34,7 +34,7 @@
 #define _________________GREEK_L3__________________     TX_ZETA,  TX_CHI,  TX_PSI, TX_OMEG, TX_BETA
 #define _________________GREEK_R1__________________     TX_UPSL, TX_THET, TX_IOTA, TX_OMCR,   TX_PI
 #define _________________GREEK_R2__________________      TX_ETA,   TX_XI, TX_KAPP, TX_LMBD, TX_FRAC
-#define _________________GREEK_R3__________________       TX_NU,   TX_MU, XXXXXXX, XXXXXXX, _______
+#define _________________GREEK_R3__________________       TX_NU,   TX_MU, XXXXXXX,TG(_GREEK), _______
 
 #define _________________LATEX_L1__________________     XXXXXXX, XXXXXXX, XXXXXXX, TX_RGHT, TX_DFDT
 #define _________________LATEX_L2__________________     XXXXXXX, TX_SQRT, XXXXXXX, XXXXXXX, XXXXXXX
@@ -94,11 +94,11 @@
 
 #define _________________RAISE_R1__________________     ______________SHIFT_NUMROW_15______________
 #ifdef LATEX_ENABLE
-#define _________________RAISE_R2__________________     S(KC_6), S(KC_7), S(KC_8),TG(_GREEK),TG(_LATEX)
+#define _________________RAISE_R2__________________     S(KC_6), S(KC_7), S(KC_8),TG(_GREEK),S(KC_MINS)
 #else
 #define _________________RAISE_R2__________________     ______________SHIFT_NUMROW_60______________
 #endif
-#define _________________RAISE_R3__________________     _______, S(KC_GRV), S(KC_QUOT), S(KC_MINS), S(KC_BSLS)
+#define _________________RAISE_R3__________________     _______, S(KC_GRV), S(KC_QUOT),TG(_GREEK), S(KC_BSLS)
 
 #define ____________________6C_RAISE_L1_____________________    _______, _________________RAISE_L1__________________
 #define ____________________6C_RAISE_L2_____________________    _______, _________________RAISE_L2__________________
