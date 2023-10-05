@@ -99,7 +99,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|-------------------------------------------------------|                                   |-------------------------------------------------------|
       XXXXXXX, XXXXXXX, RGB_VAD, RGB_SAD, RGB_HUD,RGB_RMOD,                                       SCRL_IN, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   //|-------------------------------------------------------|                                   |-------------------------------------------------------|
-      MT(MOD_LALT|MOD_LSFT,KC_NO), ______ADJUST_LTHUMB______, KC_MS_BTN1,             KC_MS_BTN2, ______ADJUST_RTHUMB______,  KC_RCTL,
+      MT(MOD_LALT|MOD_LSFT,KC_NO), ______ADJUST_LTHUMB______, KC_MS_BTN1,             KC_MS_BTN2, ______ADJUST_RTHUMB______, KC_RCTL,
                                                                  KC_PGUP, TG(_TRACK),  KC_PGDN, XXXXXXX, XXXXXXX, XXXXXXX
                                                             //`--------------'  `--------------'
     ),
@@ -113,7 +113,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                                     |--------+--------+--------+--------+--------+--------|
       _______, _________________GREEK_L3__________________,                                       _________________GREEK_R3__________________, _______,
   //|--------+--------+--------+--------+--------+--------|                                     |--------+--------+--------+--------+--------+--------|
-      MT(MOD_LALT|MOD_LSFT,KC_NO), _______, _______, TG(_GREEK), KC_MS_BTN1,          KC_MS_BTN2, TX_BSPC, _______, _______,  KC_RCTL,
+      MT(MOD_LALT|MOD_LSFT,KC_NO), ______GREEK_LTHUMB_______, KC_MS_BTN1,             KC_MS_BTN2, ______GREEK_RTHUMB_______,  KC_RCTL,
                                                                  KC_PGUP, KC_MS_BTN3,  KC_PGDN, XXXXXXX, XXXXXXX, XXXXXXX
                                       //`--------------------------'                   `--------------------------'
     ),
