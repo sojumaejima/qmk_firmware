@@ -29,21 +29,15 @@
 #define __________PARENTHESES_R___________              KC_RBRC, KC_RCBR, KC_RPRN, KC_RABK
 
 #ifdef LATEX_ENABLE
-#define _________________GREEK_L1__________________     XXXXXXX, TX_FRAC, TX_EPSL,  TX_RHO,  TX_TAU
-#define _________________GREEK_L2__________________     TX_ALPH, TX_SIGM, TX_DLTA,  TX_PHI, TX_GAMM
-#define _________________GREEK_L3__________________     TX_ZETA,  TX_CHI,  TX_PSI, TX_OMEG, TX_BETA
-#define _________________GREEK_R1__________________     TX_UPSL, TX_THET, TX_IOTA, TX_OMCR,   TX_PI
-#define _________________GREEK_R2__________________      TX_ETA,   TX_XI, TX_KAPP, TX_LMBD, TX_FRAC
-#define _________________GREEK_R3__________________       TX_NU,   TX_MU, XXXXXXX, XXXXXXX, _______
+#define _________________LATEX_L1__________________     XXXXXXX, TX_FRAC, TX_EPSL,  TX_RHO,  TX_TAU
+#define _________________LATEX_L2__________________     TX_ALPH, TX_SIGM, TX_DLTA,  TX_PHI, TX_GAMM
+#define _________________LATEX_L3__________________     TX_ZETA,  TX_CHI,  TX_PSI, TX_OMEG, TX_BETA
+#define _________________LATEX_R1__________________     TX_UPSL, TX_THET, TX_IOTA, TX_OMCR,   TX_PI
+#define _________________LATEX_R2__________________      TX_ETA,   TX_XI, TX_KAPP, TX_LMBD, TX_FRAC
+#define _________________LATEX_R3__________________       TX_NU,   TX_MU, XXXXXXX, XXXXXXX, _______
 
-/*
-#define _________________LATEX_L1__________________     XXXXXXX, XXXXXXX, XXXXXXX, TX_RGHT, TX_DFDT
-#define _________________LATEX_L2__________________     XXXXXXX, TX_SQRT, XXXXXXX, XXXXXXX, XXXXXXX
-#define _________________LATEX_L3__________________     TX_DFDZ, TX_DFDX, XXXXXXX, XXXXXXX, XXXXXXX
-#define _________________LATEX_R1__________________     TX_DFDY, XXXXXXX, XXXXXXX, TX_OVLN, XXXXXXX
-#define _________________LATEX_R2__________________      TX_HAT, XXXXXXX, XXXXXXX, TX_LEFT, TX_FRAC
-#define _________________LATEX_R3__________________     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
-*/
+#define ______LATEX_LTHUMB_______                       _______, MT(MOD_LCTL|MOD_LSFT,KC_NO), TG(_LATEX)
+#define ______LATEX_RTHUMB_______                       TX_BSPC, MT(MOD_RCTL|MOD_RSFT,KC_NO), _______
 #endif
 
 #define ___________ONESHOTMODS____________              OSM(MOD_RSFT),OSM(MOD_RGUI),OSM(MOD_RALT),OSM(MOD_RCTL)
@@ -96,7 +90,7 @@
 
 #define _________________RAISE_R1__________________     ______________SHIFT_NUMROW_15______________
 #ifdef LATEX_ENABLE
-#define _________________RAISE_R2__________________     S(KC_6), S(KC_7), S(KC_8),TG(_GREEK),S(KC_MINS)
+#define _________________RAISE_R2__________________     S(KC_6), S(KC_7), S(KC_8),TG(_LATEX),S(KC_MINS)
 #else
 #define _________________RAISE_R2__________________     ______________SHIFT_NUMROW_60______________
 #endif
