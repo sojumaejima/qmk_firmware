@@ -14,7 +14,7 @@ enum userspace_layers {
     _ADJUST,
 #ifdef LATEX_ENABLE
     _GREEK,
-    _LATEX,
+//    _LATEX,
 #endif
     _LAYER_SAFE_RANGE,
 };

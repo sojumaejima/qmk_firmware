@@ -3,21 +3,9 @@
 
 #define MOD_MASK_MEH (MOD_MASK_CTRL|MOD_MASK_ALT|MOD_MASK_SHIFT)
 
-tex_macro_t tex_cmd_ctrl[11] = {
-    {"\\widetilde{}",                   12, 1},
-    {"\\widehat{}",                     10, 1},
-    {"\\overline{}",                    11, 1},
-    {"\\sqrt{}",                        7, 1},
-    {"\\frac{}{}",                      9, 3},
-    {"\\frac{\\partial }{\\partial \\tau}",   31,16},
-    {"\\frac{\\partial }{\\partial \\xi}",    30,15},
-    {"\\frac{\\partial }{\\partial \\eta}",   31,16},
-    {"\\frac{\\partial }{\\partial \\zeta}",  32,17},
-    {"\\left(  \\right)",               15, 8},
-    {"\\right",                         6, 0}
-};
 
-tex_macro_t latex_codes[1<<3][25] = {
+//tex_macro_t latex_codes[1<<3][25] = {
+tex_macro_t latex_codes[6][25] = {
     {
         {"\\alpha",     6, 0},
         {"\\beta",      5, 0},
@@ -43,7 +31,7 @@ tex_macro_t latex_codes[1<<3][25] = {
         {"\\chi",       4, 0},
         {"\\psi",       4, 0},
         {"\\omega",     6, 0},
-        {"",0, 0}
+        {"\\frac{}{}",  9, 3},
     },
     {
         {"A",           1, 0},
@@ -151,33 +139,6 @@ tex_macro_t latex_codes[1<<3][25] = {
         {"\\frac{\\partial }{\\partial x}", 28,13},
         {"",0, 0},
         {"",0, 0},
-        {"\\frac{}{}",                      9, 3},
-    },
-    {
-        {"",0, 0},
-        {"",0, 0},
-        {"",0, 0},
-        {"",0, 0},
-        {"",0, 0},
-        {"",0, 0},
-        {"",0, 0},
-        {"",0, 0},
-        {"",0, 0},
-        {"",0, 0},
-        {"",0, 0},
-        {"",0, 0},
-        {"",0, 0},
-        {"",0, 0},
-        {"",0, 0},
-        {"",0, 0},
-        {"",0, 0},
-        {"",0, 0},
-        {"",0, 0},
-        {"",0, 0},
-        {"",0, 0},
-        {"",0, 0},
-        {"",0, 0},
-        {"",0, 0},
         {"",0, 0},
     },
     {
@@ -207,44 +168,41 @@ tex_macro_t latex_codes[1<<3][25] = {
         {"",0, 0},
         {"",0, 0},
     },
-    {
-        {"",0, 0},
-        {"",0, 0},
-        {"",0, 0},
-        {"",0, 0},
-        {"",0, 0},
-        {"",0, 0},
-        {"",0, 0},
-        {"",0, 0},
-        {"",0, 0},
-        {"",0, 0},
-        {"",0, 0},
-        {"",0, 0},
-        {"",0, 0},
-        {"",0, 0},
-        {"",0, 0},
-        {"",0, 0},
-        {"",0, 0},
-        {"",0, 0},
-        {"",0, 0},
-        {"",0, 0},
-        {"",0, 0},
-        {"",0, 0},
-        {"",0, 0},
-        {"",0, 0},
-        {"",0, 0},
-    },
 };
 
 static uint8_t lens[NUM_BACKSPACE];
 static uint8_t lefts[NUM_BACKSPACE];
 static uint8_t pos = 0;
 
+uint8_t get_latex_mods(const uint8_t mods, const uint8_t c){
+    uint8_t latex_mods = 0;
+    if ((mods & MOD_MASK_ALT) && (latex_codes[latex_mods|1<<2][c].len > 0)){ // Is alt held?
+        latex_mods |= 1<<2;
+
+        if ((mods & (MOD_MASK_CTRL|MOD_MASK_SHIFT)) && (latex_codes[latex_mods|1<<0][c].len > 0)) {  // Is ctrl or shift held?
+            latex_mods |= 1<<0;
+        }
+        return latex_mods;
+    }
+
+    if ((mods & MOD_MASK_CTRL) && (latex_codes[latex_mods|1<<1][c].len > 0)){ // Is ctrl held?
+        latex_mods |= 1<<1;
+    }
+    if ((mods & MOD_MASK_SHIFT) && (latex_codes[latex_mods|1<<0][c].len > 0)){ // Is shift held?
+        latex_mods |= 1<<0;
+    }
+    if ((mods & MOD_MASK_CTRL) && (mods & MOD_MASK_SHIFT) && (latex_codes[latex_mods|((1<<2)-1)][c].len > 0)){ // Is shift held?
+        latex_mods |= ((1<<2)-1);
+    }
+        
+    return latex_mods;
+}
+
+
 bool process_latex(uint16_t keycode, keyrecord_t *record){
     const uint8_t mods = get_mods();
     const uint8_t oneshot_mods = get_oneshot_mods();
     uint8_t c;
-    uint8_t latex_mods = 0;
 
     if (record->event.pressed) {
         clear_mods();
@@ -252,26 +210,8 @@ bool process_latex(uint16_t keycode, keyrecord_t *record){
         switch (keycode) {
             case TX_ALPH ... TX_FRAC:
                 c = keycode - TX_ALPH;
-                if ((mods | oneshot_mods) & MOD_MASK_ALT) {  // Is alt held?
-                    if (latex_codes[latex_mods | 1<<2][c].len > 0){
-                        latex_mods |= 1<<2;
-                    }
-                }
-                if ((mods | oneshot_mods) & MOD_MASK_CTRL) {  // Is ctrl held?
-                    if (latex_codes[latex_mods | 1<<1][c].len > 0){
-                        latex_mods |= 1<<1;
-                    }
-                }
-                if ((mods | oneshot_mods) & MOD_MASK_SHIFT) {  // Is shift held?
-                    if (latex_codes[latex_mods | 1<<0][c].len > 0){
-                        latex_mods |= 1<<0;
-                    }
-                }
-                if ((mods | oneshot_mods) & MOD_MASK_MEH) {  // Is meh held?
-                    if (latex_codes[latex_mods | ((1<<3)-1)][c].len > 0){
-                        latex_mods |= ((1<<3)-1);
-                    }
-                }
+                uint8_t latex_mods = get_latex_mods(mods|oneshot_mods, c);
+
                 send_string(latex_codes[latex_mods][c].str);
                 for (uint8_t i=0; i<latex_codes[latex_mods][c].left; i++){
                     tap_code(KC_LEFT);
