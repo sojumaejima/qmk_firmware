@@ -117,7 +117,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                                  KC_PGUP, KC_MS_BTN3,  KC_PGDN, XXXXXXX, XXXXXXX, XXXXXXX
                                       //`--------------------------'                   `--------------------------'
     ),
-
+/*
   [_LATEX] = LAYOUT_wrapper(
   //,-----------------------------------------------------.                                     ,-----------------------------------------------------.
       _______, _________________LATEX_L1__________________,                                       _________________LATEX_R1__________________, _______,
@@ -130,6 +130,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                                  KC_PGUP, KC_MS_BTN3,  KC_PGDN, XXXXXXX, XXXXXXX, XXXXXXX
                                       //`--------------------------'                   `--------------------------'
     ),
+*/
 #endif
 };
 
