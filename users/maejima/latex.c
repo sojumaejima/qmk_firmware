@@ -1,10 +1,7 @@
 #ifdef LATEX_ENABLE
 #include <latex.h>
 
-#define MOD_MASK_MEH (MOD_MASK_CTRL|MOD_MASK_ALT|MOD_MASK_SHIFT)
 
-
-//tex_macro_t latex_codes[1<<3][25] = {
 tex_macro_t latex_codes[6][25] = {
     {
         {"\\alpha",     6, 0},
