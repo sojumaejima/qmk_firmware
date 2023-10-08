@@ -61,7 +61,7 @@
 
 //#define _______BASE_LTHUMB_______                       LGUI_T(KC_LNG2), MO(_LOWER), KC_SPC
 #define _______BASE_LTHUMB_______                       LGUI_T(KC_LNG2), LT(_LOWER,KC_TAB), KC_SPC
-#define _______BASE_RTHUMB_______                       KC_SPC, MO(_RAISE), RALT_T(KC_LNG1)
+#define _______BASE_RTHUMB_______                       KC_SPC, LT(_RAISE,KC_ENT), RALT_T(KC_LNG1)
 
 
 #define _________________LOWER_L1__________________     _________________NUMROW_15_________________
