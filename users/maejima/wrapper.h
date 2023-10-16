@@ -60,8 +60,8 @@
 #define _____________________6C_BASE_R3_____________________    __________________BASE_R3__________________, KC_RSFT
 
 //#define _______BASE_LTHUMB_______                       LGUI_T(KC_LNG2), MO(_LOWER), KC_SPC
-#define _______BASE_LTHUMB_______                       LGUI_T(KC_LNG2), LT(_LOWER,KC_TAB), KC_SPC
-#define _______BASE_RTHUMB_______                       KC_SPC, LT(_RAISE,KC_ENT), RALT_T(KC_LNG1)
+#define _______BASE_LTHUMB_______                       LGUI_T(KC_LNG2), LT(_LOWER,KC_TAB), LCTL_T(KC_SPC)
+#define _______BASE_RTHUMB_______                       RSFT_T(KC_SPC), LT(_RAISE,KC_ENT), RALT_T(KC_LNG1)
 
 
 #define _________________LOWER_L1__________________     _________________NUMROW_15_________________
@@ -80,13 +80,13 @@
 #define ____________________6C_LOWER_R2_____________________    _________________LOWER_R2__________________, RGUI_T(KC_GRV)
 #define ____________________6C_LOWER_R3_____________________    _________________LOWER_R3__________________, RSFT_T(KC_DEL)
 
-#define ______LOWER_LTHUMB_______                       _______, _______,  KC_ENT
+#define ______LOWER_LTHUMB_______                       _______, _______,  LCTL_T(KC_ENT)
 #define ______LOWER_RTHUMB_______                       KC_BSPC, LT(_RAISE,KC_ENT), _______
 
 
 #define _________________RAISE_L1__________________     _______, __________PARENTHESES_L___________
 #define _________________RAISE_L2__________________      KC_TAB, __________PARENTHESES_R___________
-#define _________________RAISE_L3__________________     KC_PLUS, KC_MINS, KC_ASTR, KC_SLSH,  KC_EQL
+#define _________________RAISE_L3__________________     KC_SLSH, KC_ASTR, KC_MINS, KC_PLUS,  KC_EQL
 
 #define _________________RAISE_R1__________________     ______________SHIFT_NUMROW_15______________
 #ifdef LATEX_ENABLE
@@ -104,8 +104,8 @@
 #define ____________________6C_RAISE_R2_____________________    _________________RAISE_R2__________________, _______
 #define ____________________6C_RAISE_R3_____________________    _________________RAISE_R3__________________, _______
 
-#define ______RAISE_LTHUMB_______                       _______, LT(_LOWER,KC_ENT), KC_ESC
-#define ______RAISE_RTHUMB_______                        KC_ENT, _______, _______
+#define ______RAISE_LTHUMB_______                       _______, LT(_LOWER,KC_ENT), LCTL_T(KC_ESC)
+#define ______RAISE_RTHUMB_______                        RSFT_T(KC_ENT), _______, _______
 
 
 #define _________________ADJUST_L1_________________     __________________FUNC_15__________________
