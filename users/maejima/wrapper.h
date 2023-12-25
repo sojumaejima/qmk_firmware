@@ -1,6 +1,8 @@
 #pragma once
 #include "maejima.h"
 
+#define  SC_LOCK C(G(KC_Q))
+
 #define MODTAP_R3(K01, K02, K03, K04, K05) K01, K02, K03, K04, RAG_T(K05)
 
 //      1......, 2......, 3......, 4......, 5......     1......, 2......, 3......, 4......, 5......
@@ -61,7 +63,7 @@
 
 //#define _______BASE_LTHUMB_______                       LGUI_T(KC_LNG2), MO(_LOWER), KC_SPC
 #define _______BASE_LTHUMB_______                       LGUI_T(KC_LNG2), LT(_LOWER,KC_TAB), LCTL_T(KC_SPC)
-#define _______BASE_RTHUMB_______                       RSFT_T(KC_SPC), LT(_RAISE,KC_ENT), RALT_T(KC_LNG1)
+#define _______BASE_RTHUMB_______                       KC_SPC, LT(_RAISE,KC_ENT), RALT_T(KC_LNG1)
 
 
 #define _________________LOWER_L1__________________     _________________NUMROW_15_________________
@@ -80,8 +82,8 @@
 #define ____________________6C_LOWER_R2_____________________    _________________LOWER_R2__________________, RGUI_T(KC_GRV)
 #define ____________________6C_LOWER_R3_____________________    _________________LOWER_R3__________________, RSFT_T(KC_DEL)
 
-#define ______LOWER_LTHUMB_______                       _______, _______,  LCTL_T(KC_ENT)
-#define ______LOWER_RTHUMB_______                       KC_BSPC, LT(_RAISE,KC_ENT), _______
+#define ______LOWER_LTHUMB_______                       LGUI_T(KC_ESC), _______,  LCTL_T(KC_ENT)
+#define ______LOWER_RTHUMB_______                       KC_BSPC, LT(_RAISE,KC_ENT), RALT_T(KC_DEL)
 
 
 #define _________________RAISE_L1__________________     _______, __________PARENTHESES_L___________
@@ -105,20 +107,20 @@
 #define ____________________6C_RAISE_R3_____________________    _________________RAISE_R3__________________, _______
 
 #define ______RAISE_LTHUMB_______                       _______, LT(_LOWER,KC_ENT), LCTL_T(KC_ESC)
-#define ______RAISE_RTHUMB_______                        RSFT_T(KC_ENT), _______, _______
+#define ______RAISE_RTHUMB_______                        KC_ENT, _______, _______
 
 
 #define _________________ADJUST_L1_________________     __________________FUNC_15__________________
 #define _________________ADJUST_L2_________________     __________________FUNC_60__________________
 #define _________________ADJUST_L3_________________     _________________FUNC_1115_________________
 
-#define ____________________6C_ADJUST_L1____________________    _______, _________________ADJUST_L1_________________
+#define ____________________6C_ADJUST_L1____________________    SC_LOCK, _________________ADJUST_L1_________________
 #define ____________________6C_ADJUST_L2____________________    _______, _________________ADJUST_L2_________________
 #define ____________________6C_ADJUST_L3____________________    _______, _________________ADJUST_L3_________________
 
 #define ____________________6C_ADJUST_R1____________________     KC_MPRV, KC_MPLY, KC_MNXT, KC_MUTE, KC_VOLD, KC_VOLU
-#define ____________________6C_ADJUST_R2____________________     KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, XXXXXXX, XXXXXXX
-#define ____________________6C_ADJUST_R3____________________     KC_BTN1, KC_BTN3, KC_BTN2, XXXXXXX, XXXXXXX, XXXXXXX
+#define ____________________6C_ADJUST_R2____________________     KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, KC_VOLU, XXXXXXX
+#define ____________________6C_ADJUST_R3____________________     KC_BTN1, KC_BTN3, KC_BTN2, XXXXXXX, KC_VOLD, XXXXXXX
 
 #define ______ADJUST_LTHUMB______                       _______, _______, _______
 #define ______ADJUST_RTHUMB______                       _______, _______, _______
