@@ -173,7 +173,7 @@ static uint8_t pos = 0;
 
 uint8_t get_latex_mods(const uint8_t mods, const uint8_t c){
     uint8_t latex_mods = 0;
-    if ((mods & MOD_MASK_ALT) && (latex_codes[latex_mods|1<<2][c].len > 0)){ // Is alt held?
+    if ((mods & (MOD_MASK_ALT|MOD_MASK_GUI)) && (latex_codes[latex_mods|1<<2][c].len > 0)){ // Is alt or gui held?
         latex_mods |= 1<<2;
 
         if ((mods & (MOD_MASK_CTRL|MOD_MASK_SHIFT)) && (latex_codes[latex_mods|1<<0][c].len > 0)) {  // Is ctrl or shift held?
@@ -188,7 +188,7 @@ uint8_t get_latex_mods(const uint8_t mods, const uint8_t c){
     if ((mods & MOD_MASK_SHIFT) && (latex_codes[latex_mods|1<<0][c].len > 0)){ // Is shift held?
         latex_mods |= 1<<0;
     }
-    if ((mods & MOD_MASK_CTRL) && (mods & MOD_MASK_SHIFT) && (latex_codes[latex_mods|((1<<2)-1)][c].len > 0)){ // Is shift held?
+    if ((mods & MOD_MASK_CTRL) && (mods & MOD_MASK_SHIFT) && (latex_codes[latex_mods|((1<<2)-1)][c].len > 0)){ // Is ctrl and shift held?
         latex_mods |= ((1<<2)-1);
     }
         
